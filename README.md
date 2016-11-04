@@ -32,7 +32,7 @@ import (
 
 type config struct {
 	Home         string        `env:"HOME"`
-	Port         int           `env:"PORT" envDefault:"3000"`
+	Port         int           `env:"PORT" default:"3000"`
 	IsProduction bool          `env:"PRODUCTION"`
 	Hosts        []string      `env:"HOSTS" envSeparator:":"`
 	Duration     time.Duration `env:"DURATION"`
@@ -70,7 +70,7 @@ The library has support for the following types:
 * `[]float32`
 * `[]float64`
 
-If you set the `envDefault` tag for something, this value will be used in the
+If you set the `default` tag for something, this value will be used in the
 case of absence of it in the environment. If you don't do that AND the
 environment variable is also not set, the zero-value
 of the type will be used: empty for `string`s, `false` for `bool`s
@@ -88,7 +88,7 @@ an error is returned if the `config` struct is changed to:
 ```go
 type config struct {
     Home         string   `env:"HOME"`
-    Port         int      `env:"PORT" envDefault:"3000"`
+    Port         int      `env:"PORT" default:"3000"`
     IsProduction bool     `env:"PRODUCTION"`
     Hosts        []string `env:"HOSTS" envSeparator:":"`
     SecretKey    string   `env:"SECRET_KEY,required"`
