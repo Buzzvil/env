@@ -64,7 +64,7 @@ func get(field reflect.StructField) (string, error) {
 
 	key, opts := parseKeyForOption(field.Tag.Get("env"))
 
-	defaultValue := field.Tag.Get("envDefault")
+	defaultValue := field.Tag.Get("default")
 	val = getOr(key, defaultValue)
 
 	if len(opts) > 0 {
